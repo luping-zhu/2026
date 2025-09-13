@@ -78,6 +78,7 @@ void initialize() {
   chassis.initialize();
   ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
+
 }
 
 /**
@@ -240,8 +241,17 @@ void ez_template_extras() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+  if (ez::as::page_blank_is_on(0)) {
+    ez::screen_print("Hello World!", 1);  // Print "Hello World!" on the second line
+  } 
   // This is preference to what you like to drive on
-  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+  // chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+  // bool belt_intake_start = false;
+  // bool belt_intake_reverse = false;
+  // bool top_intake_start = false;
+  // bool top_intake_reverse = false;
+  int beltintake = 0;
+  int topintake = 0;
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
@@ -256,6 +266,114 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
+    // Handle the controller input and update the status
+
+    //R1 intake belt
+    //R2 outtake belt
+    //L1 intake top
+    //L2 outtake top
+
+    if (master.get_digital_new_press(DIGITAL_R1)) {
+      if (beltintake == 0) {
+        beltintake = 600;
+      } else if (beltintake == -1) {
+        beltintake = 600;
+      } else {
+        beltintake = 0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_R2)) {
+      if (beltintake == 0) {
+        beltintake = -600;
+      } else if (beltintake == 1) {
+        beltintake = -600;
+      } else {
+        beltintake = 0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_L1)) {
+      if (topintake == 0) {
+        topintake = -600;
+      } else if (topintake == -1) {
+        topintake = -600;
+      } else {
+        topintake = 0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_L2)) {
+      if (topintake == 0) {
+        topintake = 600;
+      } else if (topintake == 1) {
+        topintake = 600;
+      } else {
+        topintake = 0;
+      }
+    }
+
+    piston_bottom.button_toggle(master.get_digital(DIGITAL_UP));
+    piston_middle_intake.button_toggle(master.get_digital(DIGITAL_RIGHT));
+
+  
+
+  
+
+    //top_intake -600 intake
+    //top_intake 600 outtake
+    //belt_intake 600 intake
+    //belt_intake -600 outtake
+
+    belt_intake.move_velocity(beltintake);
+    top_intake.move_velocity(topintake);
+
+
+    // if (master.get_digital_new_press(DIGITAL_R1)) {
+    //   belt_intake_start = !belt_intake_start;
+    // }
+
+    // if (master.get_digital_new_press(DIGITAL_R2)) {
+    //   belt_intake_reverse = !belt_intake_reverse;
+    // }
+
+    // if (master.get_digital_new_press(DIGITAL_L1)) {
+    //   top_intake_start = !top_intake_start;
+    // }
+
+    // if (master.get_digital_new_press(DIGITAL_L2)) {
+    //   top_intake_reverse = !top_intake_reverse;
+    //}
+
+
+    // // Based on the status, update the motors
+   
+    // if (belt_intake_start) {
+    //   belt_intake.move_velocity(600);
+    // } else {
+    //   belt_intake.brake();
+    // }
+
+    // if (belt_intake_reverse) {
+    //   belt_intake.move_velocity(-600); 
+    // } else {
+    //   belt_intake.brake();
+    // }
+
+    // if (top_intake_start) {
+    //   top_intake.move_velocity(-200); 
+    // } else {
+    //   top_intake.brake();
+    // }
+
+    // if (top_intake_reverse) {
+    //   top_intake.move_velocity(200); 
+    // } else {
+    //   top_intake.brake();
+    // }
+
+    // top_intake.move_velocity(-200);  //intake
+    //top_intake.move_velocity(200);    //outtake
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
