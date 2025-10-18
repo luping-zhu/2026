@@ -314,9 +314,9 @@ void opcontrol() {
       }
     }
 
-    piston_bottom.button_toggle(master.get_digital(DIGITAL_A));
-    piston_middle_intake.button_toggle(master.get_digital(DIGITAL_UP));
-    piston_descore.button_toggle(master.get_digital(DIGITAL_X));
+    piston_bottom.button_toggle(master.get_digital(DIGITAL_B));
+    piston_middle_intake.button_toggle(master.get_digital(DIGITAL_X));
+    piston_descore.button_toggle(master.get_digital(DIGITAL_A));
 
     // if (master.get_digital_new_press(DIGITAL_A)) {
     //   piston_descore.set(true);
