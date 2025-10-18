@@ -48,86 +48,152 @@ void default_constants() {
 ///
 // Drive Example
 ///
-void drive_example() {
 
-  // chassis.pid_turn_set(90_deg, TURN_SPEED);
-
-  
-
-  belt_intake.move(100);
-  chassis.pid_drive_set(12_in, DRIVE_SPEED, true);
+void left_auton() {
+  piston_descore.set(true);
+  // piston_descore_updown.set(true);
+  ///// RED AND BLUE LEFT AUTON INTAKE THREE BALLS SCORE TO MIDDLE AND INTAKE THREE RELOADER BALLS SCORE LONG
+  belt_intake.move(180);
+  chassis.pid_drive_set(10_in, DRIVE_SPEED, true); //12
   chassis.pid_wait();
-  chassis.pid_turn_set(-35_deg, TURN_SPEED);
+  chassis.pid_turn_set(-34_deg, TURN_SPEED); //-34
   chassis.pid_wait();
-  DRIVE_SPEED = 80;
-  chassis.pid_drive_set(8_in, DRIVE_SPEED, true);
+  DRIVE_SPEED = 40;
+  chassis.pid_drive_set(10.2_in, DRIVE_SPEED, true); //9
   chassis.pid_wait();
   piston_bottom.set(true);
-  chassis.pid_drive_set(6_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(4.3_in, DRIVE_SPEED, true);  //6.5
+  chassis.pid_wait();
+  DRIVE_SPEED = 100;
+  chassis.pid_turn_set(-135_deg, TURN_SPEED);
+  chassis.pid_wait();
+  //piston_bottom.set(false);
+  chassis.pid_drive_set(-20.3_in, DRIVE_SPEED, true); //-20
+  chassis.pid_wait();
+  top_intake.move(-180);
+  pros::delay(1000);
+  top_intake.move(0);
+  chassis.pid_drive_set(53_in, DRIVE_SPEED, true); //52
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  //piston_bottom.set(true);
+  chassis.pid_drive_set(21_in, DRIVE_SPEED, true); //22
   chassis.pid_wait();
 
-
-  // chassis.pid_turn_set(-135_deg, TURN_SPEED);
+  // //new code going back into the loader again
+  // chassis.pid_drive_set(-7_in, DRIVE_SPEED, true);
   // chassis.pid_wait();
-  // DRIVE_SPEED = 80;
-  //piston_middle_intake.set(true);
-  // chassis.pid_drive_set(-19_in, DRIVE_SPEED, true);
+  // chassis.pid_turn_set(180_deg, TURN_SPEED);;
   // chassis.pid_wait();
-  
-  // The first parameter is target inches
-  // The second parameter is max speed the robot will drive at
-  // The third parameter is a boolean (true or false) for enabling/disabling a slew at the start of drive motions
-  // for slew, only enable it when the drive distance is greater than the slew distance + a few inches
-
-  // chassis.pid_drive_set(-48_in, DRIVE_SPEED, true);
+  // chassis.pid_drive_set(10_in, DRIVE_SPEED, true);
   // chassis.pid_wait();
 
-  // chassis.pid_turn_set(180_deg, TURN_SPEED);
-  // chassis.pid_wait();
-
-  // chassis.pid_turn_set(180_deg, TURN_SPEED);
-  // chassis.pid_wait();
-
-  // chassis.pid_turn_set(-90_deg, TURN_SPEED);
-  // chassis.pid_wait();
-
-  // chassis.pid_turn_set(0_deg, TURN_SPEED);
-  // chassis.pid_wait();
-
-  // chassis.pid_drive_set(48_in, DRIVE_SPEED, true);
-  // chassis.pid_wait();
-
-  // chassis.pid_turn_set(90_deg, TURN_SPEED);
-  // chassis.pid_wait();
-
-  // chassis.pid_drive_set(48_in, DRIVE_SPEED, true);
-  // chassis.pid_wait();
-
-  // chassis.pid_turn_set(180_deg, TURN_SPEED);
-  // chassis.pid_wait();
-
-  // chassis.pid_drive_set(48_in, DRIVE_SPEED, true);
-  // chassis.pid_wait();
-
-  // chassis.pid_turn_set(-90_deg, TURN_SPEED);
-  // chassis.pid_wait();
-
-  // chassis.pid_drive_set(48_in, DRIVE_SPEED, true);
-  // chassis.pid_wait();
-
-  // chassis.pid_turn_set(0_deg, TURN_SPEED);
-  // chassis.pid_wait();
-
-  
-
-  //chassis.pid_drive_set(48_in, DRIVE_SPEED);
-  //chassis.pid_wait();
-
-
-
-  // chassis.pid_drive_set(-12_in, DRIVE_SPEED);
-  // chassis.pid_wait();
+  //pros::delay(100); //200
+  //belt_intake.move(0);
+  DRIVE_SPEED = 80;
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-33_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  piston_middle_intake.set(true);
+  top_intake.move(-180);
+  piston_bottom.set(false);
 }
+
+void right_auton() {
+  piston_descore.set(true);
+  // piston_descore_updown.set(true);
+  ///// RED AND BLUE RIGHT AUTON INTAKE THREE BALLS AND INTAKE THREE RELOADER BALLS ALL SCORE TO LONG
+  belt_intake.move(180); 
+  chassis.pid_drive_set(12_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set(33_deg, TURN_SPEED); 
+  chassis.pid_wait();
+  DRIVE_SPEED = 80;
+  chassis.pid_drive_set(9_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  piston_bottom.set(true);
+  chassis.pid_drive_set(6_in, DRIVE_SPEED, true); 
+  chassis.pid_wait();
+  chassis.pid_turn_set(135_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(33_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  DRIVE_SPEED = 80;
+  chassis.pid_drive_set(-25_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  piston_middle_intake.set(true);
+  top_intake.move(-180);
+  pros::delay(1700);
+  top_intake.move(0);
+  ////// chassis.pid_turn_set(180_deg, TURN_SPEED);
+  ////// chassis.pid_wait();
+  chassis.pid_drive_set(40_in, DRIVE_SPEED, true); //40
+  chassis.pid_wait();
+
+  ////code for going one more time into the loader
+  // chassis.pid_drive_set(-7_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
+  // chassis.pid_turn_set(180_deg, TURN_SPEED);;
+  // chassis.pid_wait();
+  // chassis.pid_drive_set(10_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
+
+  pros::delay(200); //200
+  chassis.pid_drive_set(-33_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  top_intake.move(-180);
+  piston_bottom.set(false);
+  
+}
+
+void auton_skill() {
+  belt_intake.move(180);
+  chassis.pid_drive_set(12_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-33_deg, TURN_SPEED); //-33
+  chassis.pid_wait();
+  DRIVE_SPEED = 65;
+  chassis.pid_drive_set(8.5_in, DRIVE_SPEED, true); //9
+  chassis.pid_wait();
+  piston_bottom.set(true);
+  chassis.pid_drive_set(6.2_in, DRIVE_SPEED, true);  //5.7
+  chassis.pid_wait();
+  DRIVE_SPEED = 100;
+  chassis.pid_turn_set(-135_deg, TURN_SPEED);
+  chassis.pid_wait();
+  //piston_bottom.set(false);
+  chassis.pid_drive_set(-18_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  top_intake.move(-100);
+  pros::delay(1900); //1000
+  top_intake.move(0);
+  chassis.pid_drive_set(52_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  //piston_bottom.set(true);
+  chassis.pid_drive_set(21_in, DRIVE_SPEED, true); //16
+  chassis.pid_wait();
+  pros::delay(1000);
+  //belt_intake.move(0);00
+  DRIVE_SPEED = 60;
+  chassis.pid_turn_set(180_deg, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-32_in, DRIVE_SPEED, true); //-33
+  chassis.pid_wait();
+  piston_middle_intake.set(true);
+  top_intake.move(-180);
+  piston_bottom.set(false);
+}
+
+void drive_example() {
+  left_auton();
+}
+
 
 ///
 // Turn Example

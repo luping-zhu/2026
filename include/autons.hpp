@@ -2,6 +2,10 @@
 
 void default_constants();
 
+void left_auton();
+void right_auton();
+void auton_skill();
+
 void drive_example();
 void turn_example();
 void drive_and_turn();
