@@ -25,7 +25,7 @@ inline double right_distance = 0.0;
 
 // right_distance = right_distance_sensor.get_distance() / 25.4;
 
-inline int DRIVE_SPEED = 100;
+inline int DRIVE_SPEED = 95;
 inline int TURN_SPEED = 70;
 inline int SWING_SPEED = 110;
 // inline pros::Motor intake(1);

@@ -61,7 +61,7 @@ void initialize() {
       {"Left auton\n\nLeft auton", left_auton},
       {"Right\n\nRight auton", right_auton},
       {"Skills auton\n\nSkills auton", auton_skill},
-      // {"Drive and Turn\n\nSlow down during drive", wait_until_change_speed},
+      {"pid", pid_thing}
       // {"Swing Turn\n\nSwixng in an 'S' curve", swing_example},
       // {"Motion Chaining\n\nDrive forward, turn, and come back, but blend everything together :D", motion_chaining},
       // {"Combine all 3 movements", combining_movements},
@@ -246,7 +246,7 @@ void opcontrol() {
     ez::screen_print("Hello World!", 1);  // Print "Hello World!" on the second line
   } 
   // This is preference to what you like to drive on
-  // chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+  chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
   // bool belt_intake_start = false;
   // bool belt_intake_reverse = false;
   // bool top_intake_start = false;
