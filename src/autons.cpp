@@ -12,7 +12,7 @@
 ///
 void default_constants() {
   // P, I, D, and Start I
-  chassis.pid_drive_constants_set(6.0, 0.0, 7.0); //1st version: 5.0, 0.0, 0.0        // Fwd/rev constants, used for odom and non odom motions
+  chassis.pid_drive_constants_set(4.1, 0.0, 0.0); //6.0, 0.0, 7.0        // Fwd/rev constants, used for odom and non odom motions
   chassis.pid_heading_constants_set(11.5, 0.0, 50.0); //2nd version: 9.9, 0.0, 20.0      // Holds the robot straight while going forward without odom
   chassis.pid_turn_constants_set(3.0, 0.0, 20.0, 0.0);     // Turn in place constants
   chassis.pid_swing_constants_set(6.0, 0.0, 65.0);          // Swing constants
@@ -153,7 +153,7 @@ void right_auton() {
 }
 
 void pid_thing(){
-  chassis.pid_drive_set(72_in, DRIVE_SPEED, true);
+  chassis.pid_turn_set(180_deg, TURN_SPEED);;
 }
 
 void auton_skill() {
@@ -191,10 +191,10 @@ void auton_skill() {
   chassis.pid_wait();
   piston_bottom.set(true);
   belt_intake.move(180); 
-  chassis.pid_drive_set(20_in, DRIVE_SPEED, true); //29.8
+  chassis.pid_drive_set(22_in, DRIVE_SPEED, true); //20
   chassis.pid_wait();
   pros::delay(1000);
-  chassis.pid_turn_set(89_deg, TURN_SPEED);
+  chassis.pid_turn_set(88.5_deg, TURN_SPEED); //89
   chassis.pid_wait();
   chassis.pid_drive_set(-33_in, DRIVE_SPEED, true);
   chassis.pid_wait();
@@ -231,10 +231,36 @@ void auton_skill() {
 
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-18_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(-17.5_in, DRIVE_SPEED, true); //-18
   chassis.pid_wait();
   piston_bottom.set(false);
   chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-80_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  back_distance = back_distance_sensor.get_distance() / 25.4;
+  chassis.pid_drive_set(- (back_distance - 15.5), DRIVE_SPEED, true); //18.5
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-17_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  top_intake.move(-180);
+  pros::delay(3400);
+  top_intake.move(0);
+
+  chassis.pid_turn_set(-91.5_deg, TURN_SPEED);
+  chassis.pid_wait();
+  piston_bottom.set(true);
+  belt_intake.move(180); 
+  chassis.pid_drive_set(33_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  pros::delay(1000);
+  chassis.pid_drive_set(-17.5_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  piston_bottom.set(false);
+
+  chassis.pid_turn_set(0_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(-80_in, DRIVE_SPEED, true);
   chassis.pid_wait();
@@ -248,6 +274,10 @@ void auton_skill() {
   top_intake.move(-180);
   pros::delay(3400);
   top_intake.move(0);
+
+
+
+
 
   
   
