@@ -6,6 +6,8 @@ void left_auton();
 void right_auton();
 void auton_skill();
 void pid_thing();
+void right_auton1_6();
+void new_skill();
 
 void drive_example();
 void turn_example();
