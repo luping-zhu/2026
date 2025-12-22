@@ -60,6 +60,7 @@ void initialize() {
   ez::as::auton_selector.autons_add({
       {"Left auton\n\nLeft auton", left_auton},
       {"Right\n\nRight auton", right_auton},
+      {"Solo\n\nAWP", soloawp_auton},
       {"Right auton 1+6\n\nRight auton 1+6", right_auton1_6},
       {"Skills auton\n\nSkills auton", auton_skill},
       {"pid", pid_thing},
