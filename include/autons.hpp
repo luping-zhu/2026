@@ -4,8 +4,10 @@ void default_constants();
 
 void left5long2middle_auton();
 void left2long5middle_auton();
-void rightsevendescore_auton();
+void rightsevendescore_auton(); //THIS AUTON HAS TWO OUTTAKING TIMES
 void rightsevenpush_auton();
+void rightsevendescorewithonlyoneouttaking();
+void leftsevendescore_auton();
 void leftfourdescore_auton();
 void rightfourdescore_auton();
 void soloawp_auton();

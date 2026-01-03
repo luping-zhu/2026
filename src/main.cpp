@@ -60,7 +60,9 @@ void initialize() {
   ez::as::auton_selector.autons_add({
       {"Left 5 + 2\n\n2 on middle then 5 on long", left5long2middle_auton},
       {"Left 2 + 5\n\n2 on long then 5 on middle", left2long5middle_auton},
-      {"Right 7 + descore\n\n7 on long goal then descore", rightsevendescore_auton},
+      {"Right 7 + descore with two outtaking\n\n7 on long goal then descore two outtaking", rightsevendescore_auton},
+      {"Right 7 + descore with only one outtaking\n\n7 on long goal then descore one outtaking", rightsevendescorewithonlyoneouttaking},
+      {"Left 7 + descore\n\n7 on long goal then descore one outtaking", leftsevendescore_auton},
       {"Right 7 + push\n\n7 on long goal then push", rightsevenpush_auton},
       {"Solo\n\nAWP", soloawp_auton},
       {"Left 4 + descore\n\n4 on long goal then descore", leftfourdescore_auton},
