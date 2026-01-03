@@ -58,9 +58,13 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Left auton\n\nLeft auton", left_auton},
-      {"Right\n\nRight auton", right_auton},
+      {"Left 5 + 2\n\n2 on middle then 5 on long", left5long2middle_auton},
+      {"Left 2 + 5\n\n2 on long then 5 on middle", left2long5middle_auton},
+      {"Right 7 + descore\n\n7 on long goal then descore", rightsevendescore_auton},
+      {"Right 7 + push\n\n7 on long goal then push", rightsevenpush_auton},
       {"Solo\n\nAWP", soloawp_auton},
+      {"Left 4 + descore\n\n4 on long goal then descore", leftfourdescore_auton},
+      {"Right 4 + descore\n\n4 on long goal then descore", rightfourdescore_auton},
       {"Right auton 1+6\n\nRight auton 1+6", right_auton1_6},
       {"Skills auton\n\nSkills auton", auton_skill},
       {"pid", pid_thing},
@@ -291,9 +295,9 @@ void opcontrol() {
 
     if (master.get_digital_new_press(DIGITAL_R2)) {
       if (beltintake == 0) {
-        beltintake = -600;
+        beltintake = -400; //-600
       } else if (beltintake == 1) {
-        beltintake = -600;
+        beltintake = -400; //-600
       } else {
         beltintake = 0;
       }
@@ -322,6 +326,7 @@ void opcontrol() {
     piston_bottom.button_toggle(master.get_digital(DIGITAL_B));
     piston_middle_intake.button_toggle(master.get_digital(DIGITAL_X));
     piston_descore.button_toggle(master.get_digital(DIGITAL_A));
+    piston_descore_middle.button_toggle(master.get_digital(DIGITAL_Y));
 
     // if (master.get_digital_new_press(DIGITAL_A)) {
     //   piston_descore.set(true);

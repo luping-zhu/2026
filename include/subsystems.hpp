@@ -6,12 +6,12 @@
 extern Drive chassis;
 
 // Your motors, sensors, etc. should go here.  Below are examples
-inline pros::Motor belt_intake(17, pros::v5::MotorGears::blue);
+inline pros::Motor belt_intake(-17, pros::v5::MotorGears::blue);
 inline pros::Motor top_intake(16, pros::v5::MotorGears::blue);
 inline ez::Piston piston_bottom('A', false);
 inline ez::Piston piston_middle_intake('B', false); //true
-
 inline ez::Piston piston_descore('C', false);
+inline ez::Piston piston_descore_middle('D', false);
 // inline ez::Piston piston_descore_updown('D', false);
 
 inline pros::Distance back_distance_sensor(10);

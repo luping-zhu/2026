@@ -2,8 +2,12 @@
 
 void default_constants();
 
-void left_auton();
-void right_auton();
+void left5long2middle_auton();
+void left2long5middle_auton();
+void rightsevendescore_auton();
+void rightsevenpush_auton();
+void leftfourdescore_auton();
+void rightfourdescore_auton();
 void soloawp_auton();
 void auton_skill();
 void pid_thing();
