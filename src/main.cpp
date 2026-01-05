@@ -264,6 +264,7 @@ void opcontrol() {
   // bool top_intake_reverse = false;
   int beltintake = 0;
   int topintake = 0;
+  int slowtopintake = 0;
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
@@ -322,6 +323,16 @@ void opcontrol() {
         topintake = 600;
       } else {
         topintake = 0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_UP)) {
+      if (slowtopintake % 2 == 0) {
+        topintake = -300;
+        slowtopintake += 1;
+      } else {
+        topintake = 0;
+        slowtopintake += 1;
       }
     }
 

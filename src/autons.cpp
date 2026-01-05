@@ -468,9 +468,9 @@ void pid_thing()
   // chassis.pid_drive_set(-back_distance - 10, DRIVE_SPEED, true);
   // chassis.pid_wait();
 
-  DRIVE_SPEED = 80;
+  DRIVE_SPEED = 90;
   belt_intake.move(180);
-  chassis.pid_drive_set(75_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(65_in, DRIVE_SPEED, true);
   chassis.pid_wait();
   
 
