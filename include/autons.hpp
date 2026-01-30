@@ -1,9 +1,12 @@
 #pragma once
 
 void default_constants();
+void test();
+void left5long2middle_autondescore();
+void left5long2middle_autonpush();
 
-void left5long2middle_auton();
 void left2long5middle_auton();
+
 void rightsevendescore_auton(); //THIS AUTON HAS TWO OUTTAKING TIMES
 void rightsevenpush_auton();
 void rightsevendescorewithonlyoneouttaking();
@@ -15,6 +18,7 @@ void auton_skill();
 void pid_thing();
 void right_auton1_6();
 void new_skill();
+void version3_autonskill();
 
 void drive_example();
 void turn_example();

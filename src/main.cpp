@@ -58,19 +58,22 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Left 5 + 2\n\n2 on middle then 5 on long", left5long2middle_auton},
-      {"Left 2 + 5\n\n2 on long then 5 on middle", left2long5middle_auton},
-      {"Right 7 + descore with two outtaking\n\n7 on long goal then descore two outtaking", rightsevendescore_auton},
-      {"Right 7 + descore with only one outtaking\n\n7 on long goal then descore one outtaking", rightsevendescorewithonlyoneouttaking},
+      {"Left 5 + 2 descore\n\n2 on middle then 5 on long DESCORE", left5long2middle_autondescore},
+      {"Left 5 + 2 push\n\n2 on middle then 5 on long PUSH", left5long2middle_autonpush},
       {"Left 7 + descore\n\n7 on long goal then descore one outtaking", leftsevendescore_auton},
-      {"Right 7 + push\n\n7 on long goal then push", rightsevenpush_auton},
-      {"Solo\n\nAWP", soloawp_auton},
       {"Left 4 + descore\n\n4 on long goal then descore", leftfourdescore_auton},
+      {"Left 2 + 5\n\n2 on long then 5 on middle and stay there", left2long5middle_auton},
+      {"DONT RUN OLD CODE Right 7 + descore with two outtaking\n\n7 on long goal then descore two outtaking BASICALLY DONT USE", rightsevendescore_auton},
+      {"Right 7 + descore with only one outtaking\n\n7 on long goal then descore one outtaking", rightsevendescorewithonlyoneouttaking},
+      {"Right 7 + push\n\n7 on long goal then push", rightsevenpush_auton},
       {"Right 4 + descore\n\n4 on long goal then descore", rightfourdescore_auton},
-      {"Right auton 1+6\n\nRight auton 1+6", right_auton1_6},
+      {"NEWEST VERSION Version 3 auton skill RUN THIS 1/17",version3_autonskill},
+      {"Solo\n\nAWP", soloawp_auton},
+      {"IRREVELANT 1/17 1low6long Right auton 1+6\n\nRight auton 1+6", right_auton1_6},
       {"Skills auton\n\nSkills auton", auton_skill},
       {"pid", pid_thing},
-      {"new auton skill", new_skill}
+      {"new auton skill", new_skill},
+      {"test", test}
       // {"Swing Turn\n\nSwixng in an 'S' curve", swing_example},
       // {"Motion Chaining\n\nDrive forward, turn, and come back, but blend everything together :D", motion_chaining},
       // {"Combine all 3 movements", combining_movements},
@@ -328,7 +331,7 @@ void opcontrol() {
 
     if (master.get_digital_new_press(DIGITAL_UP)) {
       if (slowtopintake % 2 == 0) {
-        topintake = -300;
+        topintake = -220;
         slowtopintake += 1;
       } else {
         topintake = 0;
