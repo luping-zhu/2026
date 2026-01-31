@@ -268,6 +268,8 @@ void opcontrol() {
   int beltintake = 0;
   int topintake = 0;
   int slowtopintake = 0;
+  int topintake_speed = 400;
+  int good_speed = -220;
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
@@ -311,9 +313,9 @@ void opcontrol() {
 
     if (master.get_digital_new_press(DIGITAL_L1)) {
       if (topintake == 0) {
-        topintake = -600;
+        topintake = -topintake_speed;
       } else if (topintake == -1) {
-        topintake = -600;
+        topintake = -topintake_speed;
       } else {
         topintake = 0;
       }
@@ -321,9 +323,17 @@ void opcontrol() {
 
     if (master.get_digital_new_press(DIGITAL_L2)) {
       if (topintake == 0) {
-        topintake = 600;
+        topintake = topintake_speed;
       } else if (topintake == 1) {
-        topintake = 600;
+        topintake = topintake_speed;
+      } else {
+        topintake = 0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_UP)) {
+      if (topintake == 0) {
+        topintake = good_speed;
       } else {
         topintake = 0;
       }
