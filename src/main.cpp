@@ -67,13 +67,14 @@ void initialize() {
       {"Right 7 + descore with only one outtaking\n\n7 on long goal then descore one outtaking", rightsevendescorewithonlyoneouttaking},
       {"Right 7 + push\n\n7 on long goal then push", rightsevenpush_auton},
       {"Right 4 + descore\n\n4 on long goal then descore", rightfourdescore_auton},
-      {"NEWEST VERSION Version 3 auton skill RUN THIS 1/17",version3_autonskill},
+      {"NEWEST VERSION Version 3 auton skill RUN THIS 1/17 2/7",version3_autonskill},
       {"Solo\n\nAWP", soloawp_auton},
       {"IRREVELANT 1/17 1low6long Right auton 1+6\n\nRight auton 1+6", right_auton1_6},
       {"Skills auton\n\nSkills auton", auton_skill},
       {"pid", pid_thing},
       {"new auton skill", new_skill},
-      {"test", test}
+      {"test", test},
+      {"drive_example", drive_example}
       // {"Swing Turn\n\nSwixng in an 'S' curve", swing_example},
       // {"Motion Chaining\n\nDrive forward, turn, and come back, but blend everything together :D", motion_chaining},
       // {"Combine all 3 movements", combining_movements},
