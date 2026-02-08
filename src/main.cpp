@@ -63,7 +63,6 @@ void initialize() {
       {"Left 7 + descore\n\n7 on long goal then descore one outtaking", leftsevendescore_auton},
       {"Left 4 + descore\n\n4 on long goal then descore", leftfourdescore_auton},
       {"Left 2 + 5\n\n2 on long then 5 on middle and stay there", left2long5middle_auton},
-      {"DONT RUN OLD CODE Right 7 + descore with two outtaking\n\n7 on long goal then descore two outtaking BASICALLY DONT USE", rightsevendescore_auton},
       {"Right 7 + descore with only one outtaking\n\n7 on long goal then descore one outtaking", rightsevendescorewithonlyoneouttaking},
       {"Right 7 + push\n\n7 on long goal then push", rightsevenpush_auton},
       {"Right 4 + descore\n\n4 on long goal then descore", rightfourdescore_auton},

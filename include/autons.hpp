@@ -1,6 +1,9 @@
 #pragma once
 
 void default_constants();
+void new_constants();
+void long_distance(double distance);
+
 void test();
 void left5long2middle_autondescore();
 void left5long2middle_autonpush();
