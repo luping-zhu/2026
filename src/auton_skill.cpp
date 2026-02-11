@@ -683,12 +683,12 @@ void test() {
   DRIVE_SPEED = 90;
   belt_intake.move(180);
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 90_ms, 250_ms);
-  chassis.pid_drive_set(30_in, DRIVE_SPEED); //15
+  chassis.pid_drive_set(40_in, DRIVE_SPEED); //15
   chassis.pid_wait();
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 180_ms, 3_in, 50_ms, 180_ms);
   chassis.pid_drive_set(-6.5_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(30_in, DRIVE_SPEED);
+  chassis.pid_drive_set(40_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
 
@@ -716,7 +716,7 @@ void test() {
   chassis.pid_wait();
 
   //top_intake.move(-55);
-  top_intake.move_velocity(-210); //220
+  top_intake.move_velocity(-195); //220
   belt_intake.move(180);
   pros::delay(3000);
   //top_intake.move(-70); //65
@@ -726,9 +726,9 @@ void test() {
   //pros::delay(1200);
   top_intake.move(0);
 
-  chassis.pid_drive_set(1.5_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(1_in, DRIVE_SPEED, true); //1.5
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-4.5_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED, true); //-4.5
   chassis.pid_wait();
 
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 100_ms, 500_ms);
@@ -741,7 +741,7 @@ void test() {
 
   //going to first matchload
   
-  chassis.pid_drive_set(51.5_in, DRIVE_SPEED, true); // 50
+  chassis.pid_drive_set(51_in, DRIVE_SPEED, true); // 51.5
   chassis.pid_wait();
   piston_middle_intake.set(true);
   piston_bottom.set(true);
@@ -761,7 +761,7 @@ void test() {
   chassis.pid_wait_quick_chain();
   check_velocity();
   back_distance = back_distance_sensor.get_distance() / 25.4;
-  chassis.pid_drive_set(34 - back_distance, DRIVE_SPEED, true); // 33.5
+  chassis.pid_drive_set(33 - back_distance, DRIVE_SPEED, true); // 33.5
   chassis.pid_wait();
   chassis.pid_turn_set(0_deg, TURN_SPEED);
   chassis.pid_wait_quick_chain();
@@ -782,7 +782,7 @@ void test() {
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-(40 - left_distance), DRIVE_SPEED, true);
   chassis.pid_wait();
-  top_intake.move(-150); //-180
+  top_intake.move(-110); //-180
   pros::delay(1300); ////1450
 
   chassis.pid_turn_set(-175.3_deg, TURN_SPEED); //////-88.5
@@ -791,7 +791,7 @@ void test() {
 
   belt_intake.move(180);
   piston_bottom.set(true);
-  chassis.pid_drive_set(29.5_in, DRIVE_SPEED, true); //30.5
+  chassis.pid_drive_set(29.5_in, DRIVE_SPEED, true); //29.5
   chassis.pid_wait();
   pros::delay(1350); //////730
   chassis.pid_turn_set(-175.3_deg, TURN_SPEED);
@@ -800,13 +800,13 @@ void test() {
   chassis.pid_wait();
   top_intake.move(-180);
   piston_bottom.set(false);
-  pros::delay(2000); ////2150
+  pros::delay(2050); ////2150
   top_intake.move(0);
 
 
 
 
-  chassis.pid_drive_set(7_in, DRIVE_SPEED, true); //12.5
+  chassis.pid_drive_set(8_in, DRIVE_SPEED, true); //7
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, TURN_SPEED); //180
   chassis.pid_wait();
@@ -822,7 +822,7 @@ void test() {
   chassis.pid_turn_set(180_deg, DRIVE_SPEED, true); //-90
   chassis.pid_wait();
 
-  chassis.pid_drive_set(right_distance - 6, DRIVE_SPEED, true); //5.5
+  chassis.pid_drive_set(right_distance - 7, DRIVE_SPEED, true); //6.5
   chassis.pid_wait();
   pros::delay(1100);
 
@@ -834,7 +834,7 @@ void test() {
   chassis.pid_turn_set(-90_deg, TURN_SPEED); //0
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-18_in, DRIVE_SPEED, true); //-19
+  chassis.pid_drive_set(-14_in, DRIVE_SPEED, true); //-14.5
   chassis.pid_wait();
   chassis.pid_turn_set(180_deg, TURN_SPEED); //-90
   chassis.pid_wait();
@@ -858,14 +858,14 @@ void test() {
   top_intake.move(-180);
   pros::delay(2200); //2150
   top_intake.move(0);
-  chassis.pid_turn_set(7_deg, TURN_SPEED); //92
+  chassis.pid_turn_set(6_deg, TURN_SPEED); //7
   chassis.pid_wait();
 
   piston_bottom.set(true);
-  chassis.pid_drive_set(31_in, DRIVE_SPEED, true); //32.3
+  chassis.pid_drive_set(30_in, DRIVE_SPEED, true); //30.5
   chassis.pid_wait();
   pros::delay(1300); 
-  chassis.pid_turn_set(7_deg, TURN_SPEED); //92
+  chassis.pid_turn_set(6_deg, TURN_SPEED); //7
   chassis.pid_wait();
   chassis.pid_drive_set(-32_in, DRIVE_SPEED, true); //////-30.5
   chassis.pid_wait();
