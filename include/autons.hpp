@@ -5,6 +5,7 @@ void new_constants();
 void long_distance(double distance);
 
 void test();
+void align_middle_driver();
 void left5long2middle_autondescore();
 void left5long2middle_autonpush();
 

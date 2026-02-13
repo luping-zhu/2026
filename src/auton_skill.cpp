@@ -677,6 +677,38 @@ void stop_in_parking() {
   pros::delay(1500);
   chassis.drive_set(0,0);
 }
+void align_middle_driver() {
+  drive_example();
+  //writing 4th gen auto skill with 7 in middle goal yay
+  DRIVE_SPEED = 110;
+
+
+  //new_constants();
+  DRIVE_SPEED = 90;
+  //top_intake.move(-18);
+  DRIVE_SPEED = 90;
+  
+  
+  chassis.pid_turn_set(-90_deg, DRIVE_SPEED);
+  chassis.pid_wait();
+  check_velocity();
+  right_distance = right_distance_sensor.get_distance() / 25.4;
+  back_distance = back_distance_sensor.get_distance() / 25.4;
+  // back_distance_sensor.get_object_velocity()
+  chassis.pid_drive_set(-(back_distance - 39), DRIVE_SPEED, true); //38.5
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(40 - right_distance, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  //belt_intake.move(0);
+
+  chassis.pid_turn_set(48_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-21.2_in, DRIVE_SPEED, true); 
+  chassis.pid_wait();
+}
 
 void test() {
   drive_example();

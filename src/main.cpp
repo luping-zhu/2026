@@ -241,6 +241,12 @@ void ez_template_extras() {
   }
 }
 
+int topintake = 0;
+void change_topintake() {
+  pros::delay(3000);
+  topintake = -260;
+}
+
 /**
  * Runs the operator control code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -266,10 +272,8 @@ void opcontrol() {
   // bool top_intake_start = false;
   // bool top_intake_reverse = false;
   int beltintake = 0;
-  int topintake = 0;
   int slowtopintake = 0;
-  int topintake_speed = 400;
-  int good_speed = -220;
+  int topintake_speed = 380;
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
@@ -333,20 +337,15 @@ void opcontrol() {
 
     if (master.get_digital_new_press(DIGITAL_UP)) {
       if (topintake == 0) {
-        topintake = good_speed;
+        topintake = -180;
+        pros::Task task1(change_topintake);
       } else {
         topintake = 0;
       }
     }
 
-    if (master.get_digital_new_press(DIGITAL_UP)) {
-      if (slowtopintake % 2 == 0) {
-        topintake = -220;
-        slowtopintake += 1;
-      } else {
-        topintake = 0;
-        slowtopintake += 1;
-      }
+    if (master.get_digital_new_press(DIGITAL_DOWN)) {
+      align_middle_driver();
     }
 
     piston_bottom.button_toggle(master.get_digital(DIGITAL_B));
