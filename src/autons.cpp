@@ -965,7 +965,7 @@ void left5long2middle_autondescore()
   chassis.pid_drive_set(10.5_in, DRIVE_SPEED, true); // 10
   chassis.pid_wait();
   chassis.pid_turn_set(-27_deg, TURN_SPEED); //-30
-  chassis.pid_wait();
+  chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(10.2_in, DRIVE_SPEED, true); //9
   // chassis.pid_wait();
   // piston_bottom.set(true);
@@ -974,11 +974,11 @@ void left5long2middle_autondescore()
   chassis.pid_drive_set(15.5_in, DRIVE_SPEED, true); ///16.5
   chassis.pid_wait();
   chassis.pid_turn_set(-135_deg, TURN_SPEED);
-  chassis.pid_wait();
+  chassis.pid_wait_quick_chain();
   // piston_bottom.set(false);
   chassis.pid_drive_set(-17.5_in, DRIVE_SPEED, true); ////-19.5
   chassis.pid_wait();
-  top_intake.move(-110);
+  top_intake.move(-90); //110
   pros::delay(500); ///////for one balls: 100, trying two balls for sig: at home 430 530 PERFECTO
   top_intake.move(0);
   belt_intake.move(0);
@@ -988,7 +988,7 @@ void left5long2middle_autondescore()
   piston_middle_intake.set(true);
   piston_bottom.set(true);
   chassis.pid_turn_set(180_deg, TURN_SPEED); // 180
-  chassis.pid_wait();
+  chassis.pid_wait_quick_chain();
   
   belt_intake.move(180);
   
@@ -1012,7 +1012,7 @@ void left5long2middle_autondescore()
   chassis.pid_drive_set(-33_in, DRIVE_SPEED, true);
   chassis.pid_wait();
   // piston_middle_intake.set(true);
-  top_intake.move(-180);
+  top_intake.move(-110);
   piston_bottom.set(false);
   pros::delay(1150); //1800
   descore_arm_updown();

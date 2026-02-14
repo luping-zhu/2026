@@ -726,7 +726,7 @@ void test() {
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 90_ms, 250_ms);
   chassis.pid_drive_set(40_in, DRIVE_SPEED); //15
   chassis.pid_wait();
-  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 180_ms, 3_in, 50_ms, 180_ms);
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 180_ms, 3_in, 90_ms, 180_ms); //50, 180 for last two
   chassis.pid_drive_set(-6_in, DRIVE_SPEED); //-6.5
   chassis.pid_wait();
   chassis.pid_drive_set(40_in, DRIVE_SPEED);
@@ -753,7 +753,7 @@ void test() {
 
   chassis.pid_turn_set(48_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-21.2_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(-21.7_in, DRIVE_SPEED, true); //-21.2
   chassis.pid_wait();
 
   //top_intake.move(-55);
@@ -763,7 +763,7 @@ void test() {
   top_intake.move_velocity(-175); //200
   pros::delay(1200);
   top_intake.move_velocity(-185); //-220
-  pros::delay(1200); 
+  pros::delay(1250); //1200
   top_intake.move(0);
 
   chassis.pid_drive_set(1_in, DRIVE_SPEED, true); //1.5
@@ -781,7 +781,7 @@ void test() {
 
   //going to first matchload
   
-  chassis.pid_drive_set(49_in, DRIVE_SPEED, true); // 51
+  chassis.pid_drive_set(49.5_in, DRIVE_SPEED, true); // 49
   chassis.pid_wait();
   piston_middle_intake.set(true);
   piston_bottom.set(true);
@@ -903,9 +903,9 @@ void test() {
   chassis.pid_wait();
 
   piston_bottom.set(true);
-  chassis.pid_drive_set(30_in, DRIVE_SPEED, true); //30.5
+  chassis.pid_drive_set(29.6_in, DRIVE_SPEED, true); //30
   chassis.pid_wait();
-  pros::delay(1300); 
+  pros::delay(1400); //1300
   chassis.pid_turn_set(4_deg, TURN_SPEED); //6
   chassis.pid_wait();
   chassis.pid_drive_set(-32_in, DRIVE_SPEED, true); //////-30.5
