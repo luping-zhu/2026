@@ -17,12 +17,15 @@ void rightsevendescorewithonlyoneouttaking();
 void leftsevendescore_auton();
 void leftfourdescore_auton();
 void rightfourdescore_auton();
-void soloawp_auton();
+
+void signature_awp_auton();
+
 void auton_skill();
 void pid_thing();
 void right_auton1_6();
 void new_skill();
 void version3_autonskill();
+void auton_96_skill();
 
 void drive_example();
 void turn_example();

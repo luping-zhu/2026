@@ -711,6 +711,7 @@ void align_middle_driver() {
 }
 
 void test() {
+
   drive_example();
   //writing 4th gen auto skill with 7 in middle goal yay
   DRIVE_SPEED = 110;
@@ -932,4 +933,219 @@ void test() {
   pros::Task task1(stop_in_parking);
   chassis.pid_drive_set(50_in, DRIVE_SPEED); //true //49
   
+}
+
+void auton_96_skill() {
+  drive_example();
+  DRIVE_SPEED = 110;
+  DRIVE_SPEED = 90;
+  
+  belt_intake.move(180);
+
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 90_ms, 250_ms);
+  chassis.pid_drive_set(40_in, DRIVE_SPEED); //15
+  chassis.pid_wait();
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 180_ms, 3_in, 90_ms, 180_ms); //50, 180 for last two
+  chassis.pid_drive_set(-6_in, DRIVE_SPEED); //-6.5
+  chassis.pid_wait();
+  chassis.pid_drive_set(40_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
+
+  DRIVE_SPEED = 110; //115
+  chassis.pid_drive_set(-26_in, DRIVE_SPEED, true); //-27
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, DRIVE_SPEED);
+  chassis.pid_wait();
+  check_velocity();
+  right_distance = right_distance_sensor.get_distance() / 25.4;
+  back_distance = back_distance_sensor.get_distance() / 25.4;
+  chassis.pid_drive_set(-(back_distance - 39), DRIVE_SPEED, true); //38.5
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(40 - right_distance, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(48_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-21.7_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  top_intake.move_velocity(-185);
+  belt_intake.move(180);
+  pros::delay(1200);
+  top_intake.move_velocity(-175);
+  pros::delay(1200);
+  top_intake.move_velocity(-185); 
+  pros::delay(1250); 
+  top_intake.move(0);
+
+  chassis.pid_drive_set(1_in, DRIVE_SPEED, true); 
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED, true); 
+  chassis.pid_wait();
+
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 100_ms, 500_ms);
+
+  //going to first matchload
+  
+  chassis.pid_drive_set(49.5_in, DRIVE_SPEED, true); // 49.5
+  chassis.pid_wait();
+  piston_middle_intake.set(true);
+  piston_bottom.set(true);
+  chassis.pid_turn_set(0_deg, TURN_SPEED); // 180
+  chassis.pid_wait();
+  belt_intake.move(180);
+  piston_bottom.set(true);
+  chassis.pid_drive_set(15.5_in, DRIVE_SPEED, true); //16
+  chassis.pid_wait();
+  pros::delay(1400); //1300
+
+
+  chassis.pid_swing_set(ez::LEFT_SWING, -50_deg, SWING_SPEED, 45);
+  chassis.pid_wait();
+
+  chassis.pid_swing_set(ez::RIGHT_SWING, 0_deg, SWING_SPEED, 37);
+  chassis.pid_wait();
+
+
+  chassis.pid_drive_set(-66_in, DRIVE_SPEED, true); //66 CHANGE LATER
+  piston_bottom.set(false);
+  chassis.pid_wait();
+
+  back_distance = back_distance_sensor.get_distance() / 25.4;
+  if (back_distance > 33) {
+    chassis.pid_drive_set(-(back_distance - 30), DRIVE_SPEED, true); //24
+    chassis.pid_wait();
+  } 
+  else if (back_distance < 12) {
+    chassis.pid_drive_set(- (back_distance - 30), DRIVE_SPEED, true); //
+    chassis.pid_wait();
+  }
+
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  left_distance = left_distance_sensor.get_distance() / 25.4;
+  back_distance = back_distance_sensor.get_distance() / 25.4;
+  chassis.pid_drive_set(-(back_distance - 17.5), DRIVE_SPEED, true); // 17.1
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-(39.5 - left_distance), DRIVE_SPEED, true); //40
+  chassis.pid_wait();
+  top_intake.move(-95); //-180
+  pros::delay(1300); ////1450
+
+
+
+  chassis.pid_turn_set(-176.5_deg, TURN_SPEED); //////-175.3
+  chassis.pid_wait_quick_chain();
+  top_intake.move(0);
+
+  belt_intake.move(180);
+  piston_bottom.set(true);
+  chassis.pid_drive_set(30_in, DRIVE_SPEED, true); //29.5
+  chassis.pid_wait();
+  pros::delay(1350); //////730
+  chassis.pid_turn_set(-176.5_deg, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-31_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  top_intake.move(-180);
+  piston_bottom.set(false);
+  pros::delay(2050); ////2150
+  top_intake.move(0);
+
+
+  //going to third matchload
+  chassis.pid_drive_set(9_in, DRIVE_SPEED, true); //8
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, TURN_SPEED); //180
+  chassis.pid_wait();
+  long_distance(-78);
+  check_velocity();
+  right_distance = right_distance_sensor.get_distance() / 25.4;
+  back_distance = back_distance_sensor.get_distance() / 25.4;
+  chassis.pid_drive_set(-(back_distance - 18), DRIVE_SPEED, true); //16
+  chassis.pid_wait();
+  piston_bottom.set(true);
+  chassis.pid_turn_set(180_deg, DRIVE_SPEED, true); //-90
+  chassis.pid_wait();
+  chassis.pid_drive_set(right_distance - 7, DRIVE_SPEED, true); //6.5
+  chassis.pid_wait();
+  pros::delay(1250); 
+
+
+
+  chassis.pid_swing_set(ez::LEFT_SWING, 130_deg, SWING_SPEED, 45); //-50
+  chassis.pid_wait();
+
+  chassis.pid_swing_set(ez::RIGHT_SWING, 180_deg, SWING_SPEED, 37); //0
+  chassis.pid_wait();
+
+
+  chassis.pid_drive_set(-66_in, DRIVE_SPEED, true); //66 CHANGE LATER
+  piston_bottom.set(false);
+  chassis.pid_wait();
+
+  back_distance = back_distance_sensor.get_distance() / 25.4;
+  if (back_distance > 33) {
+    chassis.pid_drive_set(-(back_distance - 30), DRIVE_SPEED, true); //24
+    chassis.pid_wait();
+  } 
+  else if (back_distance < 12) {
+    chassis.pid_drive_set(- (back_distance - 30), DRIVE_SPEED, true); //
+    chassis.pid_wait();
+  }
+
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  left_distance = left_distance_sensor.get_distance() / 25.4;
+  back_distance = back_distance_sensor.get_distance() / 25.4;
+  chassis.pid_drive_set(-(back_distance - 17.5), DRIVE_SPEED, true); // 17.1
+  chassis.pid_wait();
+  chassis.pid_turn_set(0_deg, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-(39.5 - left_distance), DRIVE_SPEED, true); //40
+  chassis.pid_wait();
+  top_intake.move(-95); //-180
+  pros::delay(1300); ////1450
+
+  chassis.pid_turn_set(4_deg, TURN_SPEED); //6
+  chassis.pid_wait();
+
+  piston_bottom.set(true);
+  chassis.pid_drive_set(29.6_in, DRIVE_SPEED, true); //30
+  chassis.pid_wait();
+  pros::delay(1400); //1300
+  chassis.pid_turn_set(4_deg, TURN_SPEED); //6
+  chassis.pid_wait();
+  chassis.pid_drive_set(-32.5_in, DRIVE_SPEED, true); //////-32.5
+  chassis.pid_wait();
+  top_intake.move(-180);
+  piston_bottom.set(false);
+  pros::delay(2050); //2150
+  top_intake.move(0);
+
+
+  //GOING TO PARK
+  
+
+  DRIVE_SPEED = 127;
+  chassis.drive_angle_set(90);
+  chassis.pid_swing_set(ez::LEFT_SWING, 129_deg, SWING_SPEED, 30);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(27_in, DRIVE_SPEED, true); //26
+  chassis.pid_wait();
+  chassis.pid_swing_set(ez::LEFT_SWING, 174_deg, SWING_SPEED, 0);
+  chassis.pid_wait_quick_chain();
+  belt_intake.move(180);
+  //DRIVE_SPEED = 110;
+
+  pros::Task task1(stop_in_parking);
+  chassis.pid_drive_set(50_in, DRIVE_SPEED); //true //49
 }
