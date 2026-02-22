@@ -26,7 +26,7 @@ void left_descore_from_long() {
   chassis.drive_angle_set(90);
   chassis.pid_swing_set(ez::RIGHT_SWING, 60_deg, SWING_SPEED, 30);
   chassis.pid_wait();
-  chassis.pid_turn_set(150_deg, TURN_SPEED);
+  chassis.pid_turn_set(151.5_deg, TURN_SPEED); //150
   chassis.pid_wait();
   chassis.pid_swing_set(ez::LEFT_SWING, 89.5_deg, SWING_SPEED, 29);
   chassis.pid_wait();
@@ -61,7 +61,14 @@ void raise_descore_arm_at_14sec() {
 }
 
 void matchloaddown() {
+  //for SOLO AWP SIG
   pros::delay(980); 
+  piston_bottom.set(true);
+}
+
+void matchloaddown3() {
+  //for EATING THREE BALLS ON FIELD
+  pros::delay(500); 
   piston_bottom.set(true);
 }
 
@@ -957,39 +964,42 @@ void left2long5middle_auton() {
 void left5long2middle_autondescore()
 {
   pros::Task task1(raise_descore_arm_at_14sec);
-  default_constants();
-  DRIVE_SPEED = 110;
+  drive_example();
+  DRIVE_SPEED = 70;
   //piston_descore.set(true);
   // piston_middle_intake.set(true);
   ///// RED AND BLUE LEFT AUTON INTAKE THREE BALLS SCORE TO MIDDLE AND INTAKE THREE RELOADER BALLS SCORE LONG
   belt_intake.move(180);
-  chassis.pid_drive_set(11_in, DRIVE_SPEED, true); // 10.5
+  chassis.pid_drive_set(10.5_in, DRIVE_SPEED, true); // 10.5
   chassis.pid_wait();
   chassis.pid_turn_set(-27_deg, TURN_SPEED); //-30
-  chassis.pid_wait_quick_chain();
+  chassis.pid_wait();
   // chassis.pid_drive_set(10.2_in, DRIVE_SPEED, true); //9
   // chassis.pid_wait();
   // piston_bottom.set(true);
   // chassis.pid_drive_set(4.3_in, DRIVE_SPEED, true);  //6.5
   // chassis.pid_wait();
-  chassis.pid_drive_set(16_in, DRIVE_SPEED, true); ///15.5
+  pros::Task task2(matchloaddown3);
+  chassis.pid_drive_set(14.5_in, DRIVE_SPEED, true); ///16
   chassis.pid_wait();
+  DRIVE_SPEED = 110;
   chassis.pid_turn_set(-135_deg, TURN_SPEED);
-  chassis.pid_wait_quick_chain();
-  // piston_bottom.set(false);
-  chassis.pid_drive_set(-17.5_in, DRIVE_SPEED, true); ////-19.5
   chassis.pid_wait();
-  top_intake.move(-90); //110
+  // piston_bottom.set(false);
+  chassis.pid_drive_set(-16.5_in, DRIVE_SPEED, true); ////-17.5
+  chassis.pid_wait();
+  top_intake.move(-85); //110
   pros::delay(500); ///////for one balls: 100, trying two balls for sig: at home 430 530 PERFECTO
   top_intake.move(0);
   belt_intake.move(0);
+
   ////// piston_middle_intake.set(true);
-  chassis.pid_drive_set(52.8_in, DRIVE_SPEED, true); // 54
+  chassis.pid_drive_set(50_in, DRIVE_SPEED, true); // 50.5
   chassis.pid_wait();
   piston_middle_intake.set(true);
-  piston_bottom.set(true);
+  //piston_bottom.set(true);
   chassis.pid_turn_set(180_deg, TURN_SPEED); // 180
-  chassis.pid_wait(); //qc
+  chassis.pid_wait();
   
   belt_intake.move(180);
   
@@ -1008,12 +1018,12 @@ void left5long2middle_autondescore()
   // pros::delay(100); //200
   // belt_intake.move(0);
   //  DRIVE_SPEED = 80;
-  chassis.pid_turn_set(178.5_deg, TURN_SPEED); //179
+  chassis.pid_turn_set(179.5_deg, TURN_SPEED); //179
   chassis.pid_wait();
-  chassis.pid_drive_set(-33_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(-30_in, DRIVE_SPEED, true); //-33
   chassis.pid_wait();
   // piston_middle_intake.set(true);
-  top_intake.move(-110);
+  top_intake.move(-90);
   piston_bottom.set(false);
   pros::delay(1250); //1150
   descore_arm_updown();
@@ -1040,6 +1050,7 @@ void left5long2middle_autondescore()
   // piston_middle_intake.set(false);
   // chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-15_in, DRIVE_SPEED);
+
 }
 
 void left5long2middle_autonpush() {
@@ -1438,29 +1449,29 @@ void signature_awp_auton() {
 }
 
 void right_auton1_6() {
-  DRIVE_SPEED = 110;
-  piston_descore.set(true);
-  piston_middle_intake.set(true);
-  chassis.pid_drive_set(30.5_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  belt_intake.move(180);
-  pros::delay(100);
-  belt_intake.move(0);
-  chassis.pid_drive_set(-8.5_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  belt_intake.move(180);
-  chassis.pid_turn_set(90_deg, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  DRIVE_SPEED = 30;
-  chassis.pid_drive_set(20_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  DRIVE_SPEED = 110;
-  chassis.pid_turn_set(135_deg, TURN_SPEED, true);
-  chassis.pid_wait();
-  chassis.pid_drive_set(30_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  chassis.pid_turn_set(180_deg, DRIVE_SPEED, true);
-  chassis.pid_wait();
+  // DRIVE_SPEED = 110;
+  // piston_descore.set(true);
+  // piston_middle_intake.set(true);
+  // chassis.pid_drive_set(30.5_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
+  // belt_intake.move(180);
+  // pros::delay(100);
+  // belt_intake.move(0);
+  // chassis.pid_drive_set(-8.5_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
+  // belt_intake.move(180);
+  // chassis.pid_turn_set(90_deg, DRIVE_SPEED, true);
+  // chassis.pid_wait();
+  // DRIVE_SPEED = 30;
+  // chassis.pid_drive_set(20_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
+  // DRIVE_SPEED = 110;
+  // chassis.pid_turn_set(135_deg, TURN_SPEED, true);
+  // chassis.pid_wait();
+  // chassis.pid_drive_set(30_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
+  // chassis.pid_turn_set(180_deg, DRIVE_SPEED, true);
+  // chassis.pid_wait();
 }
 
 ///

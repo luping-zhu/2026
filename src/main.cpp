@@ -73,6 +73,7 @@ void initialize() {
       {"pid", pid_thing},
       {"new auton skill", new_skill},
       {"test", test},
+      {"91 point auton skill", auton_91_skill},
       {"96 point auton skill",auton_96_skill},
       {"drive_example", drive_example}
       // {"Swing Turn\n\nSwixng in an 'S' curve", swing_example},
@@ -336,18 +337,18 @@ void opcontrol() {
       }
     }
 
-    // if (master.get_digital_new_press(DIGITAL_UP)) {
-    //   if (topintake == 0) {
-    //     topintake = -180;
-    //     pros::Task task1(change_topintake);
-    //   } else {
-    //     topintake = 0;
-    //   }
-    // }
+    if (master.get_digital_new_press(DIGITAL_UP)) {
+      if (topintake == 0) {
+        topintake = -180;
+        pros::Task task1(change_topintake);
+      } else {
+        topintake = 0;
+      }
+    }
 
-    // if (master.get_digital_new_press(DIGITAL_DOWN)) {
-    //   align_middle_driver();
-    // }
+    if (master.get_digital_new_press(DIGITAL_DOWN)) {
+      align_middle_driver();
+    }
 
     piston_bottom.button_toggle(master.get_digital(DIGITAL_B));
     piston_middle_intake.button_toggle(master.get_digital(DIGITAL_X));
