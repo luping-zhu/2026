@@ -949,19 +949,21 @@ void auton_91_skill() {
     belt_intake.move(180);
 
     //red clearup
+    DRIVE_SPEED = 110;
     chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 90_ms, 250_ms);
-    chassis.pid_drive_set(40_in, DRIVE_SPEED); //15
+    chassis.pid_drive_set(30_in, DRIVE_SPEED); //15
     chassis.pid_wait();
     chassis.pid_drive_exit_condition_set(90_ms, 1_in, 180_ms, 3_in, 90_ms, 180_ms); //50, 180 for last two
+    DRIVE_SPEED = 110;
     chassis.pid_drive_set(-6_in, DRIVE_SPEED); //-6 kljlk
     chassis.pid_wait();
-    chassis.pid_drive_set(40_in, DRIVE_SPEED);
+    chassis.pid_drive_set(30_in, DRIVE_SPEED);
     chassis.pid_wait();
     chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
   
-    DRIVE_SPEED = 110; //115
     chassis.pid_drive_set(-26_in, DRIVE_SPEED, true); //-27
     chassis.pid_wait();
+    DRIVE_SPEED = 90;
     chassis.pid_turn_set(-90_deg, DRIVE_SPEED);
     chassis.pid_wait();
     check_velocity();
@@ -977,7 +979,7 @@ void auton_91_skill() {
   
     chassis.pid_turn_set(48_deg, TURN_SPEED);
     chassis.pid_wait();
-    chassis.pid_drive_set(-21.7_in, DRIVE_SPEED, true);
+    chassis.pid_drive_set(-21_in, DRIVE_SPEED, true); //-21.7
     chassis.pid_wait();
   
     // top_intake.move_velocity(-185);
@@ -988,11 +990,11 @@ void auton_91_skill() {
     // top_intake.move_velocity(-185); 
     // pros::delay(1250); 
 
-    top_intake.move_velocity(-180);
-    belt_intake.move(180);
+    top_intake.move_velocity(-160); //180
+    //belt_intake.move_velocity(400); //450
     pros::delay(3000);
-    top_intake.move_velocity(-220);
-    pros::delay(650);
+    top_intake.move_velocity(-260); //260
+    pros::delay(1000); //750
     top_intake.move(0);
   
     chassis.pid_drive_set(1_in, DRIVE_SPEED, true); 
@@ -1000,7 +1002,9 @@ void auton_91_skill() {
     chassis.pid_drive_set(-4_in, DRIVE_SPEED, true); 
     chassis.pid_wait();
   
-    /*
+    DRIVE_SPEED = 110;
+    belt_intake.move(180);
+
     chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 100_ms, 500_ms);
   
     //going to first matchload
@@ -1051,7 +1055,7 @@ void auton_91_skill() {
     chassis.pid_drive_set(-(39.5 - left_distance), DRIVE_SPEED, true); //40
     chassis.pid_wait();
     top_intake.move(-95); //-180
-    pros::delay(1800); ////1450
+    pros::delay(2100); ////1900
   
   
   
@@ -1063,14 +1067,14 @@ void auton_91_skill() {
     piston_bottom.set(true);
     chassis.pid_drive_set(30_in, DRIVE_SPEED, true); //29.5
     chassis.pid_wait();
-    pros::delay(1350); //////730
+    pros::delay(1600); //////1350
     chassis.pid_turn_set(-178_deg, TURN_SPEED);
     chassis.pid_wait();
     chassis.pid_drive_set(-31_in, DRIVE_SPEED, true);
     chassis.pid_wait();
     top_intake.move(-180);
     piston_bottom.set(false);
-    pros::delay(2050); ////2150
+    pros::delay(2250); ////2050
     top_intake.move(0);
   
   
@@ -1090,7 +1094,7 @@ void auton_91_skill() {
     chassis.pid_wait();
     chassis.pid_drive_set(right_distance - 7, DRIVE_SPEED, true); //6.5
     chassis.pid_wait();
-    pros::delay(1250); 
+    pros::delay(1600); //1350
   
   
   
@@ -1127,7 +1131,7 @@ void auton_91_skill() {
     chassis.pid_drive_set(-(39.5 - left_distance), DRIVE_SPEED, true); //40
     chassis.pid_wait();
     top_intake.move(-95); //-180
-    pros::delay(2050); ////1450]
+    pros::delay(2250); ////2050
     top_intake.move(0);
   
     chassis.pid_turn_set(3_deg, TURN_SPEED); //6
@@ -1136,14 +1140,14 @@ void auton_91_skill() {
     piston_bottom.set(true);
     chassis.pid_drive_set(29.8_in, DRIVE_SPEED, true); //29.6
     chassis.pid_wait();
-    pros::delay(1400); //1300
+    pros::delay(1600); //1300
     chassis.pid_turn_set(3_deg, TURN_SPEED); //6
     chassis.pid_wait();
     chassis.pid_drive_set(-32.5_in, DRIVE_SPEED, true); //////-32.5
     chassis.pid_wait();
     top_intake.move(-180);
     piston_bottom.set(false);
-    pros::delay(2050); //2150
+    pros::delay(2250); //2050
     top_intake.move(0);
   
   
@@ -1163,7 +1167,6 @@ void auton_91_skill() {
   
     pros::Task task1(stop_in_parking);
     chassis.pid_drive_set(50_in, DRIVE_SPEED); //true //49
-    */
   
 }
 
