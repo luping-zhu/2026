@@ -339,7 +339,7 @@ void opcontrol() {
 
     if (master.get_digital_new_press(DIGITAL_UP)) {
       if (topintake == 0) {
-        topintake = -180;
+        topintake = -160;
         pros::Task task1(change_topintake);
       } else {
         topintake = 0;

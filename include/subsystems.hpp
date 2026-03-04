@@ -28,6 +28,8 @@ inline double right_distance = 0.0;
 inline int DRIVE_SPEED = 110;
 inline int TURN_SPEED = 90;
 inline int SWING_SPEED = 110;
+inline int outtakingonlonggoaltime = 2000;
+inline int intakingmatchloadtime = 1000;
 // inline pros::Motor intake(1);
 // inline pros::adi::DigitalIn limit_switch('A');
 
