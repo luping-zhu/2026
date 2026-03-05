@@ -73,8 +73,8 @@ void initialize() {
       {"pid", pid_thing},
       {"new auton skill", new_skill},
       {"test", test},
-      {"91 point auton skill", auton_91_skill},
-      {"96 point auton skill",auton_96_skill},
+      {"96 point auton skill for blue 7 balls", auton_96_skill_blue7balls},
+      {"91 point auton skill",og_auton_91_skill},
       {"drive_example", drive_example}
       // {"Swing Turn\n\nSwixng in an 'S' curve", swing_example},
       // {"Motion Chaining\n\nDrive forward, turn, and come back, but blend everything together :D", motion_chaining},
@@ -246,7 +246,7 @@ void ez_template_extras() {
 int topintake = 0;
 void change_topintake() {
   pros::delay(3000);
-  topintake = -260;
+  topintake = -240; //-260
 }
 
 /**

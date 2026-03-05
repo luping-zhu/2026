@@ -26,7 +26,8 @@ void right_auton1_6();
 void new_skill();
 void version3_autonskill();
 void auton_96_skill();
-void auton_91_skill();
+void auton_96_skill_blue7balls();
+void og_auton_91_skill();
 
 void drive_example();
 void turn_example();
