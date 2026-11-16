@@ -8,10 +8,10 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {-1, -2, -3},     // Left Chassis Ports (negative port will reverse it!)
-    {11, 12, 13},  // Right Chassis Ports (negative port will reverse it!)
+    {-9, -10},     // Left Chassis Ports (negative port will reverse it!)
+    {19, 20},  // Right Chassis Ports (negative port will reverse it!)
 
-    6,      // IMU Port
+    12,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM = cartridge * (motor gear / wheel gear)
 
@@ -58,24 +58,24 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Left 5 + 2 descore\n\n2 on middle then 5 on long DESCORE", left5long2middle_autondescore},
-      {"Left 5 + 2 push\n\n2 on middle then 5 on long PUSH", left5long2middle_autonpush},
-      {"Left 7 + descore\n\n7 on long goal then descore one outtaking", leftsevendescore_auton},
-      {"Left 4 + descore\n\n4 on long goal then descore", leftfourdescore_auton},
-      {"Left 2 + 5\n\n2 on long then 5 on middle and stay there", left2long5middle_auton},
-      {"Right 7 + descore with only one outtaking\n\n7 on long goal then descore one outtaking", rightsevendescorewithonlyoneouttaking},
-      {"Right 7 + push\n\n7 on long goal then push", rightsevenpush_auton},
-      {"Right 4 + descore\n\n4 on long goal then descore", rightfourdescore_auton},
-      {"Signature AWP Auton", signature_awp_auton},
-      {"NEWEST VERSION Version 3 auton skill RUN THIS 1/17 2/7",version3_autonskill},
-      {"IRREVELANT 1/17 1low6long Right auton 1+6\n\nRight auton 1+6", right_auton1_6},
-      {"Skills auton\n\nSkills auton", auton_skill},
-      {"pid", pid_thing},
-      {"new auton skill", new_skill},
-      {"test", test},
-      {"96 point auton skill for blue 7 balls", auton_96_skill_blue7balls},
-      {"91 point auton skill",og_auton_91_skill},
-      {"drive_example", drive_example}
+      // {"Left 5 + 2 descore\n\n2 on middle then 5 on long DESCORE", left5long2middle_autondescore},
+      // {"Left 5 + 2 push\n\n2 on middle then 5 on long PUSH", left5long2middle_autonpush},
+      // {"Left 7 + descore\n\n7 on long goal then descore one outtaking", leftsevendescore_auton},
+      // {"Left 4 + descore\n\n4 on long goal then descore", leftfourdescore_auton},
+      // {"Left 2 + 5\n\n2 on long then 5 on middle and stay there", left2long5middle_auton},
+      // {"Right 7 + descore with only one outtaking\n\n7 on long goal then descore one outtaking", rightsevendescorewithonlyoneouttaking},
+      // {"Right 7 + push\n\n7 on long goal then push", rightsevenpush_auton},
+      // {"Right 4 + descore\n\n4 on long goal then descore", rightfourdescore_auton},
+      // {"Signature AWP Auton", signature_awp_auton},
+      // {"NEWEST VERSION Version 3 auton skill RUN THIS 1/17 2/7",version3_autonskill},
+      // {"IRREVELANT 1/17 1low6long Right auton 1+6\n\nRight auton 1+6", right_auton1_6},
+      // {"Skills auton\n\nSkills auton", auton_skill},
+      // {"pid", pid_thing},
+      // {"new auton skill", new_skill},
+      // {"test", test},
+      // {"96 point auton skill for blue 7 balls", auton_96_skill_blue7balls},
+      // {"91 point auton skill",og_auton_91_skill},
+      // {"drive_example", drive_example}
       // {"Swing Turn\n\nSwixng in an 'S' curve", swing_example},
       // {"Motion Chaining\n\nDrive forward, turn, and come back, but blend everything together :D", motion_chaining},
       // {"Combine all 3 movements", combining_movements},
@@ -135,7 +135,7 @@ void autonomous() {
   chassis.drive_sensor_reset();               // Reset drive sensors to 0
   chassis.odom_xyt_set(0_in, 0_in, 0_deg);    // Set the current position, you can start at a specific position with this
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);  // Set motors to hold.  This helps autonomous consistency
-  top_intake.set_brake_mode(MOTOR_BRAKE_HOLD);
+  // top_intake.set_brake_mode(MOTOR_BRAKE_HOLD);
 
   /*
   Odometry and Pure Pursuit are not magic
@@ -222,18 +222,18 @@ void ez_template_extras() {
     //  When enabled:
     //  * use A and Y to increment / decrement the constants
     //  * use the arrow keys to navigate the constants
-    if (master.get_digital_new_press(DIGITAL_X))
-      chassis.pid_tuner_toggle();
+    // // if (master.get_digital_new_press(DIGITAL_X))
+    // //   chassis.pid_tuner_toggle();
 
-    // Trigger the selected autonomous routine
-    if (master.get_digital(DIGITAL_B) && master.get_digital(DIGITAL_DOWN)) {
-      pros::motor_brake_mode_e_t preference = chassis.drive_brake_get();
-      autonomous();
-      chassis.drive_brake_set(preference);
-    }
+    // // // Trigger the selected autonomous routine
+    // // if (master.get_digital(DIGITAL_B) && master.get_digital(DIGITAL_DOWN)) {
+    // //   pros::motor_brake_mode_e_t preference = chassis.drive_brake_get();
+    // //   autonomous();
+    // //   chassis.drive_brake_set(preference);
+    // // }
 
-    // Allow PID Tuner to iterate
-    chassis.pid_tuner_iterate();
+    // // Allow PID Tuner to iterate
+    // chassis.pid_tuner_iterate();
   }
 
   // Disable PID Tuner when connected to a comp switch
@@ -268,14 +268,24 @@ void opcontrol() {
   } 
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
-  top_intake.set_brake_mode(MOTOR_BRAKE_HOLD);
+  // top_intake.set_brake_mode(MOTOR_BRAKE_HOLD);
   // bool belt_intake_start = false;
   // bool belt_intake_reverse = false;
   // bool top_intake_start = false;
   // bool top_intake_reverse = false;
-  int beltintake = 0;
-  int slowtopintake = 0;
-  int topintake_speed = 380;
+  // int beltintake = 0;
+  // int slowtopintake = 0;
+  // int topintake_speed = 380;
+
+  int lift_speed = 0;
+  int arm_speed = 0;
+  int arm_spin_speed = 0;
+  int intake_speed = 0;
+  lift_left.set_brake_mode(MOTOR_BRAKE_HOLD);
+  lift_right.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+  arm.set_brake_mode(MOTOR_BRAKE_HOLD);
+
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
@@ -287,6 +297,80 @@ void opcontrol() {
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
 
+    if (master.get_digital_new_press(DIGITAL_R1)) {
+      if (lift_speed == 0) {
+        lift_speed = 100;
+      } else {
+        lift_speed = 0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_R2)) {
+      if (lift_speed == 0) {
+        lift_speed = -100; 
+      } else {
+        lift_speed = 0;
+      }
+    }
+
+
+    // if (master.get_digital_new_press(DIGITAL_L2)) {
+    //   if (arm_speed == 0) {
+    //     arm_speed = 100;
+    //   } else {
+    //     arm_speed = 0;
+    //   }
+    // }
+
+    // if (master.get_digital_new_press(DIGITAL_L1)) {
+    //   if (arm_speed == 0) {
+    //     arm_speed = -100; 
+    //   } else {
+    //     arm_speed = 0;
+    //   }
+    // }
+
+    if (master.get_digital(DIGITAL_L1)) {
+      arm_speed = -100;
+    } else if (master.get_digital(DIGITAL_L2)) {
+      arm_speed = 100;
+    } else {
+      arm_speed = 0;
+``    }
+
+    if (master.get_digital_new_press(DIGITAL_Y)) {
+      if (arm_spin_speed == 0) {
+        arm_spin_speed = 100;
+      } else {
+        arm_spin_speed = 0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_X)) {
+      if (arm_spin_speed == 0) {
+        arm_spin_speed = -100; 
+      } else {
+        arm_spin_speed = 0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_A)) {
+      if (intake_speed == 0) {
+        intake_speed = 127;
+      } else {
+        intake_speed = 0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_B)) {
+      if (intake_speed == 0) {
+        intake_speed = -127; 
+      } else {
+        intake_speed = 0;
+      }
+    }
+
+
     // . . .
     // Put more user control code here!
     // . . .
@@ -297,63 +381,63 @@ void opcontrol() {
     //L1 intake top
     //L2 outtake top
 
-    if (master.get_digital_new_press(DIGITAL_R1)) {
-      if (beltintake == 0) {
-        beltintake = 600;
-      } else if (beltintake == -1) {
-        beltintake = 600;
-      } else {
-        beltintake = 0;
-      }
-    }
+    // if (master.get_digital_new_press(DIGITAL_R1)) {
+    //   if (beltintake == 0) {
+    //     beltintake = 600;
+    //   } else if (beltintake == -1) {
+    //     beltintake = 600;
+    //   } else {
+    //     beltintake = 0;
+    //   }
+    // }
 
-    if (master.get_digital_new_press(DIGITAL_R2)) {
-      if (beltintake == 0) {
-        beltintake = -400; //-600
-      } else if (beltintake == 1) {
-        beltintake = -400; //-600
-      } else {
-        beltintake = 0;
-      }
-    }
+    // if (master.get_digital_new_press(DIGITAL_R2)) {
+    //   if (beltintake == 0) {
+    //     beltintake = -400; //-600
+    //   } else if (beltintake == 1) {
+    //     beltintake = -400; //-600
+    //   } else {
+    //     beltintake = 0;
+    //   }
+    // }
 
-    if (master.get_digital_new_press(DIGITAL_L1)) {
-      if (topintake == 0) {
-        topintake = -topintake_speed;
-      } else if (topintake == -1) {
-        topintake = -topintake_speed;
-      } else {
-        topintake = 0;
-      }
-    }
+    // if (master.get_digital_new_press(DIGITAL_L1)) {
+    //   if (topintake == 0) {
+    //     topintake = -topintake_speed;
+    //   } else if (topintake == -1) {
+    //     topintake = -topintake_speed;
+    //   } else {
+    //     topintake = 0;
+    //   }
+    // }
 
-    if (master.get_digital_new_press(DIGITAL_L2)) {
-      if (topintake == 0) {
-        topintake = topintake_speed;
-      } else if (topintake == 1) {
-        topintake = topintake_speed;
-      } else {
-        topintake = 0;
-      }
-    }
+    // if (master.get_digital_new_press(DIGITAL_L2)) {
+    //   if (topintake == 0) {
+    //     topintake = topintake_speed;
+    //   } else if (topintake == 1) {
+    //     topintake = topintake_speed;
+    //   } else {
+    //     topintake = 0;
+    //   }
+    // }
 
-    if (master.get_digital_new_press(DIGITAL_UP)) {
-      if (topintake == 0) {
-        topintake = -160;
-        pros::Task task1(change_topintake);
-      } else {
-        topintake = 0;
-      }
-    }
+    // if (master.get_digital_new_press(DIGITAL_UP)) {
+    //   if (topintake == 0) {
+    //     topintake = -160;
+    //     pros::Task task1(change_topintake);
+    //   } else {
+    //     topintake = 0;
+    //   }
+    // }
 
-    if (master.get_digital_new_press(DIGITAL_DOWN)) {
-      align_middle_driver();
-    }
+    // if (master.get_digital_new_press(DIGITAL_DOWN)) {
+    //   align_middle_driver();
+    // }
 
-    piston_bottom.button_toggle(master.get_digital(DIGITAL_B));
-    piston_middle_intake.button_toggle(master.get_digital(DIGITAL_X));
-    piston_descore.button_toggle(master.get_digital(DIGITAL_A));
-    piston_descore_middle.button_toggle(master.get_digital(DIGITAL_Y));
+    // piston_bottom.button_toggle(master.get_digital(DIGITAL_B));
+    // piston_middle_intake.button_toggle(master.get_digital(DIGITAL_X));
+    // piston_descore.button_toggle(master.get_digital(DIGITAL_A));
+    // piston_descore_middle.button_toggle(master.get_digital(DIGITAL_Y));
 
     // if (master.get_digital_new_press(DIGITAL_A)) {
     //   piston_descore.set(true);
@@ -372,8 +456,14 @@ void opcontrol() {
     //belt_intake 600 intake
     //belt_intake -600 outtake
 
-    belt_intake.move_velocity(beltintake);
-    top_intake.move_velocity(topintake);
+    lift_left.move_velocity(lift_speed);
+    lift_right.move_velocity(lift_speed);
+    arm.move_velocity(arm_speed);
+    arm_spinner.move_velocity(arm_spin_speed);
+    intake.move_velocity(intake_speed);
+
+    // belt_intake.move_velocity(beltintake);
+    // top_intake.move_velocity(topintake);
 
 
     // if (master.get_digital_new_press(DIGITAL_R1)) {

@@ -4,14 +4,15 @@
       "name": "PROS Project",
       "includePath": [
         "${workspaceFolder}/**",
-        "/Users/aixuansun/Documents/vex-vscode-projects/4894A/include"
+        "/Users/aixuansun/Documents/vex-vscode-projects/4894A/include",
+        "/Users/lupingzhu/git/4894A/include"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "/Users/aixuansun/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
+      "compilerPath": "/Users/lupingzhu/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
@@ -20,7 +21,7 @@
       ],
       "browse": {
         "path": [
-          "/Users/aixuansun/Documents/vex-vscode-projects/4894A"
+          "/Users/lupingzhu/git/4894A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

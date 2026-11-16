@@ -5,21 +5,31 @@
 
 extern Drive chassis;
 
-// Your motors, sensors, etc. should go here.  Below are examples
-inline pros::Motor belt_intake(-17, pros::v5::MotorGears::blue);
-inline pros::Motor top_intake(16, pros::v5::MotorGears::blue);
-inline ez::Piston piston_bottom('A', false);
-inline ez::Piston piston_middle_intake('B', false); //true
-inline ez::Piston piston_descore('C', false);
-inline ez::Piston piston_descore_middle('D', false);
-// inline ez::Piston piston_descore_updown('D', false);
 
-inline pros::Distance back_distance_sensor(10);
-inline pros::Distance right_distance_sensor(19);
-inline pros::Distance left_distance_sensor(18);
-inline double back_distance = 0.0;
-inline double left_distance = 0.0;
-inline double right_distance = 0.0;
+inline pros::Motor lift_left(-1, pros::v5::MotorGears::red);
+inline pros::Motor lift_right(2, pros::v5::MotorGears::red);
+
+inline pros::Motor intake(18, pros::v5::MotorGears::red);
+
+inline pros::Motor arm(15, pros::v5::MotorGears::rpm_200);
+inline pros::Motor arm_spinner(14, pros::v5::MotorGears::rpm_200);
+
+// Your motors, sensors, etc. should go here.  Below are examples
+// inline pros::Motor belt_intake(-17, pros::v5::MotorGears::blue);
+// inline pros::Motor top_intake(16, pros::v5::MotorGears::blue);
+
+// inline ez::Piston piston_bottom('A', false);
+// inline ez::Piston piston_middle_intake('B', false); //true
+// inline ez::Piston piston_descore('C', false);
+// inline ez::Piston piston_descore_middle('D', false);
+// // inline ez::Piston piston_descore_updown('D', false);
+
+// inline pros::Distance back_distance_sensor(10);
+// inline pros::Distance right_distance_sensor(19);
+// inline pros::Distance left_distance_sensor(18);
+// inline double back_distance = 0.0;
+// inline double left_distance = 0.0;
+// inline double right_distance = 0.0;
 
 // inline pros::Optical optical_intake(13);
 
